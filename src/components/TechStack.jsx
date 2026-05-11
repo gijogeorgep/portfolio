@@ -36,7 +36,7 @@ const TechIcon = ({ skill }) => (
         ></div>
 
         {/* Icon Container */}
-        <div className="relative z-10 p-6 rounded-2xl bg-white/[0.02] border border-white/5 group-hover:border-white/20 transition-all duration-500 backdrop-blur-sm grayscale group-hover:grayscale-0">
+        <div className="relative z-10 p-6 rounded-2xl bg-black/5 dark:bg-white/[0.02] border border-black/5 dark:border-white/5 group-hover:border-black/10 dark:group-hover:border-white/20 transition-all duration-500 backdrop-blur-sm grayscale group-hover:grayscale-0">
             <div
                 className="text-6xl md:text-7xl transition-transform duration-500 group-hover:scale-110"
                 style={{ color: skill.color }}
@@ -47,7 +47,7 @@ const TechIcon = ({ skill }) => (
 
         {/* Tactical Label */}
         <div className="absolute top-full mt-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-            <span className="text-[10px] font-black tracking-[0.3em] uppercase text-white/40 whitespace-nowrap px-3 py-1 bg-white/5 rounded-full border border-white/10">
+            <span className="text-[10px] font-black tracking-[0.3em] uppercase text-gray-800 dark:text-white/40 whitespace-nowrap px-3 py-1 bg-black/5 dark:bg-white/5 rounded-full border border-black/10 dark:border-white/10">
                 {skill.name}
             </span>
         </div>
@@ -84,16 +84,17 @@ const MarqueeRow = ({ items, direction = 1 }) => {
 
 const TechStack = () => {
     return (
-        <section id="skills" className="py-32 bg-[#030303] relative overflow-hidden flex flex-col items-center justify-center min-h-screen">
+        <section id="skills" className="py-32 relative overflow-hidden flex flex-col items-center justify-center min-h-screen transition-colors duration-500">
             {/* Background Atmosphere */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.03)_0%,transparent_70%)]"></div>
-                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1.5px, transparent 1.5px)', backgroundSize: '60px 60px' }}></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05)_0%,transparent_70%)]"></div>
+                <div className="absolute inset-0 opacity-10 dark:opacity-5" style={{ backgroundImage: 'radial-gradient(rgba(0,0,0,0.1) 1.5px, transparent 1.5px)', backgroundSize: '60px 60px' }}></div>
+                <div className="absolute inset-0 opacity-0 dark:opacity-10" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1.5px, transparent 1.5px)', backgroundSize: '60px 60px' }}></div>
             </div>
 
             {/* Static Watermark Branding */}
-            <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none opacity-[0.02]">
-                <h2 className="text-[20vw] font-black text-white italic tracking-tighter uppercase leading-none">
+            <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none opacity-[0.03] dark:opacity-[0.02]">
+                <h2 className="text-[20vw] font-black text-gray-900 dark:text-white italic tracking-tighter uppercase leading-none">
                     TECH <br /> INFINITY
                 </h2>
             </div>
@@ -112,8 +113,8 @@ const TechStack = () => {
                             <span className="text-neon-primary font-mono text-[10px] tracking-[1em] uppercase">Core_System</span>
                             <div className="h-[1px] w-8 bg-neon-primary opacity-30"></div>
                         </div>
-                        <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase italic leading-none">
-                            Technical <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-primary to-white">Arsenal</span>
+                        <h2 className="text-5xl md:text-8xl font-black text-gray-900 dark:text-white tracking-tighter uppercase italic leading-none">
+                            Technical <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-primary to-blue-600 dark:to-white">Arsenal</span>
                         </h2>
                     </motion.div>
                 </div>
@@ -121,7 +122,7 @@ const TechStack = () => {
                 {/* Parallax Marquee Streams */}
                 <div className="relative">
                     {/* Top Fade Gradient */}
-                    <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[#030303] to-transparent z-20"></div>
+                    <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[var(--bg-color)] to-transparent z-20"></div>
 
                     <div className="-rotate-3 scale-110">
                         <MarqueeRow items={skills} direction={1} />
@@ -129,18 +130,18 @@ const TechStack = () => {
                     </div>
 
                     {/* Bottom Fade Gradient */}
-                    <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#030303] to-transparent z-20"></div>
+                    <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[var(--bg-color)] to-transparent z-20"></div>
                 </div>
             </div>
 
             {/* Tactical Footer Accents */}
-            <div className="absolute bottom-12 left-12 right-12 flex justify-between items-end">
+            <div className="absolute bottom-12 left-12 right-12 flex justify-between items-end px-4">
                 <div className="flex flex-col gap-2">
-                    <div className="h-[1px] w-24 bg-white/10"></div>
-                    <span className="text-[8px] font-mono text-white/20 tracking-[0.5em] uppercase">Stream_Status: SYNCED</span>
+                    <div className="h-[1px] w-24 bg-gray-900/10 dark:bg-white/10"></div>
+                    <span className="text-[8px] font-mono text-gray-500 dark:text-white/20 tracking-[0.5em] uppercase">Stream_Status: SYNCED</span>
                 </div>
                 <div className="flex flex-col gap-2 items-end">
-                    <span className="text-[8px] font-mono text-white/20 tracking-[0.5em] uppercase">FPS: 60.00</span>
+                    <span className="text-[8px] font-mono text-gray-500 dark:text-white/20 tracking-[0.5em] uppercase">FPS: 60.00</span>
                     <div className="flex gap-1">
                         {[1, 2, 3, 4].map(i => (
                             <div key={i} className="w-1 h-1 bg-neon-primary/40 rounded-full animate-pulse" style={{ animationDelay: `${i * 0.2}s` }}></div>

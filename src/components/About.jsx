@@ -25,7 +25,7 @@ const StatCounter = ({ end, label, suffix = "+" }) => {
 
     return (
         <div className="text-center p-4">
-            <span className="block text-4xl font-bold text-white mb-1">
+            <span className="block text-4xl font-bold text-gray-900 dark:text-white mb-1">
                 {count}{suffix}
             </span>
             <span className="text-sm text-gray-500 uppercase tracking-widest">{label}</span>
@@ -61,30 +61,30 @@ const About = () => {
     };
 
     return (
-        <section id="about" className="min-h-screen flex items-center bg-neon-bg py-24 relative overflow-hidden">
+        <section id="about" className="min-h-screen flex items-center py-24 relative overflow-hidden transition-colors duration-500" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
             {/* Geometric Background Accents */}
-            <div className="absolute inset-0 pointer-events-none opacity-20">
+            <div className="absolute inset-0 pointer-events-none opacity-10 dark:opacity-20">
                 <div className="absolute top-1/4 left-10 w-24 h-24 border border-neon-primary rotate-45 animate-spin-slow"></div>
                 <div className="absolute bottom-1/4 right-10 w-32 h-32 border border-neon-accent -rotate-12 animate-float"></div>
                 <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-neon-secondary/20 blur-2xl rounded-full"></div>
             </div>
 
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center w-full">
 
                 {/* Main Tagline Header */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="mb-20 text-center"
+                    className="mb-20 text-center px-6"
                 >
-                    <h2 className="text-5xl md:text-8xl font-extrabold text-white mb-8 tracking-tighter leading-none">
-                        When <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-accent to-white cursor-help relative group">Colours<span className="absolute -top-12 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all bg-neon-accent text-black text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xl shadow-neon-accent/40">The Designer</span></span> meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-primary to-neon-secondary cursor-help relative group">Colors<span className="absolute -top-12 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all bg-neon-primary text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xl shadow-neon-primary/40">The Developer</span></span>
+                    <h2 className="text-5xl md:text-8xl font-extrabold text-gray-900 dark:text-white mb-8 tracking-tighter leading-none">
+                        When <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-accent to-pink-500 dark:to-white cursor-help relative group">Colours<span className="absolute -top-12 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all bg-neon-accent text-white dark:text-black text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xl shadow-neon-accent/40">The Designer</span></span> meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-primary to-neon-secondary cursor-help relative group">Colors<span className="absolute -top-12 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all bg-neon-primary text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xl shadow-neon-primary/40">The Developer</span></span>
                     </h2>
-                    <div className="w-48 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto"></div>
+                    <div className="w-48 h-1 bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent mx-auto"></div>
                 </motion.div>
 
                 {/* Dual Cards Container */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto relative">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto relative px-6">
 
                     {/* Designer Card (Colours) */}
                     <motion.div
@@ -93,21 +93,21 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                         className="group relative"
                     >
-                        <div className="absolute -inset-1 bg-gradient-to-r from-neon-accent to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                        <div className="relative glass p-8 md:p-12 rounded-3xl border border-white/10 h-full flex flex-col justify-between overflow-hidden">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-neon-accent to-purple-600 rounded-3xl blur opacity-10 dark:opacity-25 group-hover:opacity-30 dark:group-hover:opacity-50 transition duration-1000"></div>
+                        <div className="relative bg-white/40 dark:bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-black/10 dark:border-white/10 h-full flex flex-col justify-between overflow-hidden shadow-xl dark:shadow-none">
                             {/* Design Elements Decor */}
-                            <div className="absolute top-0 right-0 p-4 opacity-10">
+                            <div className="absolute top-0 right-0 p-4 opacity-5 dark:opacity-10">
                                 <svg width="120" height="120" viewBox="0 0 100 100">
                                     <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-neon-accent" />
-                                    <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-white" />
+                                    <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gray-900 dark:text-white" />
                                 </svg>
                             </div>
 
                             <div>
                                 <span className="text-neon-accent font-mono text-sm tracking-[0.3em] uppercase mb-4 block">Visual Architect</span>
-                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">The UI Designer</h3>
-                                <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                                    Obsessed with the <span className="text-white font-semibold">pixel-perfect</span> harmony of aesthetics and utility. I don't just create layouts; I craft digital atmospheres that guide and delight users.
+                                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">The UI Designer</h3>
+                                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
+                                    Obsessed with the <span className="text-gray-900 dark:text-white font-semibold">pixel-perfect</span> harmony of aesthetics and utility. I don't just create layouts; I craft digital atmospheres that guide and delight users.
                                 </p>
                                 <div className="flex flex-wrap gap-3">
                                     {["Aesthetics", "User Experience", "Typography", "Motion Design"].map((item) => (
@@ -125,11 +125,11 @@ const About = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="group relative"
                     >
-                        <div className="absolute -inset-1 bg-gradient-to-r from-neon-primary to-blue-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                        <div className="relative glass p-8 md:p-12 rounded-3xl border border-white/10 h-full flex flex-col justify-between overflow-hidden">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-neon-primary to-blue-600 rounded-3xl blur opacity-10 dark:opacity-25 group-hover:opacity-30 dark:group-hover:opacity-50 transition duration-1000"></div>
+                        <div className="relative bg-white/40 dark:bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-black/10 dark:border-white/10 h-full flex flex-col justify-between overflow-hidden shadow-xl dark:shadow-none">
                             {/* Code Elements Decor */}
-                            <div className="absolute top-0 right-0 p-4 opacity-10">
-                                <pre className="text-[10px] leading-tight text-neon-primary font-mono">
+                            <div className="absolute top-0 right-0 p-4 opacity-5 dark:opacity-10">
+                                <pre className="text-[10px] leading-tight text-neon-primary font-mono font-bold">
                                     {`{
   "logic": "binary",
   "state": "active",
@@ -140,9 +140,9 @@ const About = () => {
 
                             <div>
                                 <span className="text-neon-primary font-mono text-sm tracking-[0.3em] uppercase mb-4 block">Logic Engineer</span>
-                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">The Full Stack Dev</h3>
-                                <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                                    Translating vision into <span className="text-white font-semibold">scalable architecture</span>. I build robust MERN ecosystems that handle the weight of functionality with elegant performance.
+                                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">The Full Stack Dev</h3>
+                                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
+                                    Translating vision into <span className="text-gray-900 dark:text-white font-semibold">scalable architecture</span>. I build robust MERN ecosystems that handle the weight of functionality with elegant performance.
                                 </p>
                                 <div className="flex flex-wrap gap-3">
                                     {["Scalability", "Clean Code", "Optimized DB", "Secure API"].map((item) => (
@@ -160,24 +160,24 @@ const About = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="mt-20 max-w-4xl text-center"
+                    className="mt-20 max-w-4xl text-center px-6"
                 >
-                    <p className="text-xl md:text-2xl text-gray-400 leading-relaxed italic">
-                        "I bridge the gap between imagination and implementation. By mastering both <span className="text-neon-accent">Form</span> and <span className="text-neon-primary">Function</span>, I create digital experiences that are truly <span className="text-white font-bold underline decoration-white/20">extraordinary</span>."
+                    <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 leading-relaxed italic">
+                        "I bridge the gap between imagination and implementation. By mastering both <span className="text-neon-accent">Form</span> and <span className="text-neon-primary">Function</span>, I create digital experiences that are truly <span className="text-gray-900 dark:text-white font-bold underline decoration-black/10 dark:decoration-white/20">extraordinary</span>."
                     </p>
 
                     <div className="flex justify-center gap-12 mt-16">
                         <StatCounter end={2} label="Years Exp" />
                         <StatCounter end={10} label="Projects" />
                         <div className="text-center p-4">
-                            <span className="block text-4xl font-bold text-white mb-1">99%</span>
+                            <span className="block text-4xl font-bold text-gray-900 dark:text-white mb-1">99%</span>
                             <span className="text-sm text-gray-500 uppercase tracking-widest">Uptime Focus</span>
                         </div>
                     </div>
 
                     <div className="mt-16">
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <button className="px-12 py-5 bg-white text-black font-bold rounded-full hover:bg-neon-primary hover:text-white transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                            <button className="px-12 py-5 bg-gray-900 dark:bg-white text-white dark:text-black font-bold rounded-full hover:bg-neon-primary hover:text-white transition-all shadow-lg dark:shadow-[0_0_30px_rgba(255,255,255,0.1)]">
                                 Start A Collaboration
                             </button>
                         </motion.div>

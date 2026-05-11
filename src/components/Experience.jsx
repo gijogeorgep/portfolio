@@ -29,11 +29,11 @@ const experienceData = [
 
 const Experience = () => {
     return (
-        <section id="experience" className="py-24 bg-neon-bg relative overflow-hidden">
+        <section id="experience" className="py-24 relative overflow-hidden transition-colors duration-500">
             {/* Background Decorations */}
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-                <div className="absolute top-1/4 -left-20 w-80 h-80 bg-neon-primary/20 rounded-full blur-[100px]"></div>
-                <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-neon-secondary/20 rounded-full blur-[100px]"></div>
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-10 dark:opacity-20">
+                <div className="absolute top-1/4 -left-20 w-80 h-80 bg-neon-primary/10 dark:bg-neon-primary/20 rounded-full blur-[100px]"></div>
+                <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-neon-secondary/10 dark:bg-neon-secondary/20 rounded-full blur-[100px]"></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
@@ -44,10 +44,10 @@ const Experience = () => {
                     viewport={{ once: true }}
                     className="text-center mb-20"
                 >
-                    <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-4 tracking-tighter">
+                    <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tighter">
                         Career <span className="text-neon-primary italic">Roadmap</span>
                     </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                         My journey from learning the ropes as an intern to building complex systems as a full-stack developer.
                     </p>
                 </motion.div>
@@ -56,7 +56,7 @@ const Experience = () => {
                     {/* The Roadmap Path (Vertical Line) */}
                     <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-primary via-neon-secondary to-transparent md:-translate-x-1/2">
                         <motion.div
-                            className="w-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+                            className="w-full bg-neon-primary shadow-[0_0_15px_rgba(99,102,241,0.5)] dark:bg-white dark:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                             initial={{ height: 0 }}
                             whileInView={{ height: '100%' }}
                             transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -75,7 +75,7 @@ const Experience = () => {
                                 className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
                             >
                                 {/* Roadmap Node */}
-                                <div className="absolute left-4 md:left-1/2 w-10 h-10 rounded-full border-4 border-neon-bg z-20 md:-translate-x-1/2 flex items-center justify-center overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                                <div className="absolute left-4 md:left-1/2 w-10 h-10 rounded-full border-4 border-[var(--bg-color)] z-20 md:-translate-x-1/2 flex items-center justify-center overflow-hidden shadow-lg">
                                     <div className={`w-full h-full ${item.color} flex items-center justify-center ${item.isCurrent ? 'animate-pulse' : ''}`}>
                                         {item.icon}
                                     </div>
@@ -86,33 +86,30 @@ const Experience = () => {
 
                                 {/* Content Card */}
                                 <div className={`w-full md:w-[45%] pl-16 md:pl-0 ${index % 2 === 0 ? "md:pr-12 text-left md:text-right" : "md:pl-12 text-left"}`}>
-                                    <div className="bg-white/[0.03] backdrop-blur-md border border-white/10 p-8 rounded-[2rem] hover:border-white/20 transition-all duration-500 group relative">
+                                    <div className="bg-white/40 dark:bg-white/[0.03] backdrop-blur-md border border-black/10 dark:border-white/10 p-8 rounded-[2rem] hover:border-neon-primary/30 dark:hover:border-white/20 transition-all duration-500 group relative shadow-xl dark:shadow-none">
                                         {/* Status Tag */}
-                                        <div className={`inline-block px-4 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest mb-4 border ${item.isCurrent ? "bg-neon-primary/20 border-neon-primary text-neon-primary" : "bg-white/10 border-white/20 text-gray-400"}`}>
+                                        <div className={`inline-block px-4 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest mb-4 border ${item.isCurrent ? "bg-neon-primary/20 border-neon-primary text-neon-primary" : "bg-black/5 dark:bg-white/10 border-black/10 dark:border-white/20 text-gray-600 dark:text-gray-400"}`}>
                                             {item.period}
                                         </div>
 
-                                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-neon-primary transition-colors">
+                                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-neon-primary transition-colors">
                                             {item.title}
                                         </h3>
-                                        <div className="text-neon-secondary font-mono text-sm mb-4">
+                                        <div className="text-neon-secondary dark:text-cyan-400 font-mono text-sm mb-4">
                                             {item.company}
                                         </div>
-                                        <p className="text-gray-400 leading-relaxed mb-6">
+                                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 font-medium dark:font-normal">
                                             {item.description}
                                         </p>
 
                                         {/* Skills Tags */}
                                         <div className={`flex flex-wrap gap-2 ${index % 2 === 0 ? "md:justify-end" : "justify-start"}`}>
                                             {item.skills.map(skill => (
-                                                <span key={skill} className="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] text-gray-300 font-mono">
+                                                <span key={skill} className="px-3 py-1 rounded-md bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 text-[10px] text-gray-700 dark:text-gray-300 font-mono">
                                                     {skill}
                                                 </span>
                                             ))}
                                         </div>
-
-                                        {/* Glass Decoration */}
-                                        <div className="absolute -z-10 top-0 left-0 w-full h-full bg-gradient-to-br from-white/[0.05] to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                     </div>
                                 </div>
                             </motion.div>

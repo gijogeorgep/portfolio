@@ -1,220 +1,253 @@
-import React, { useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Github, Zap, ArrowUpRight } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Github, Layers, ExternalLink } from "lucide-react";
 
 const projects = [
     {
-        title: "Gear box",
-        description: "Full-stack rental platform for camera equipment with secure payment integration and real-time availability tracking.",
-        tech: ["React", "Node", "MongoDB", "Razorpay"],
-        links: { demo: "https://gearbox-frontend.onrender.com/", github: "#" },
-        accent: "indigo"
+        title: "Synapse Eduhub",
+        description:
+            "A modern learning ecosystem offering personalized experiences, expert mentorship, and comprehensive resources for academic success.",
+        tech: ["React", "Node.js", "MongoDB", "Firebase"],
+        links: { demo: "https://www.synapseeduhub.com", github: "#" },
+        accent: "#6366f1",
+        category: "EdTech Platform",
+        image: "/projects/synapse.png"
     },
     {
         title: "Taskin AI",
-        description: " Task management with predictive scheduling and neural-network prioritization flow.",
-        tech: ["Next.js", "GPT-4", "Redis"],
-        links: { demo: "#", github: "#" },
-        accent: "purple"
+        description:
+            "A productivity engine with real-time collaboration, intuitive task boards, and advanced team management features.",
+        tech: ["MongoDB", "Express", "React", "Node.js", "Redis"],
+        links: { demo: "https://taskin-rho.vercel.app/", github: "#" },
+        accent: "#a855f7",
+        category: "Productivity App",
+        image: "/projects/taskin.png"
+    },
+    {
+        title: "Gear Box",
+        description:
+            "Premium photography equipment rental platform with secure payments and a seamless booking workflow.",
+        tech: ["MongoDB", "Express", "React", "Node.js", "Razorpay"],
+        links: { demo: "https://gearbox-frontend.onrender.com/", github: "#" },
+        accent: "#06b6d4",
+        category: "E-Commerce",
+        image: "/projects/gearbox.png"
     },
     {
         title: "CV Craft",
-        description: "Intelligent resume builder with real-time preview and export to PDF/Json formats for modern professionals.",
-        tech: ["React", "Firebase", "Canvas"],
+        description:
+            "A MERN-stack resume builder with customizable templates, multi-version saving, and instant high-quality document export via canvas.",
+        tech: ["MongoDB", "Express", "React", "Node.js", "Canvas API"],
         links: { demo: "#", github: "#" },
-        accent: "emerald"
+        accent: "#10b981",       // emerald
+        category: "Dev Tool",
+        image: "/projects/cvcraft.png"
     },
     {
         title: "Cookaro",
-        description: "Social recipe sharing platform with intelligent search and social gourmet feeds for food enthusiasts.",
+        description:
+            "A Kerala-cuisine-focused web app that generates ingredient lists by recipe and headcount, displaying items with images for easy meal planning.",
         tech: ["Vue.js", "Appwrite", "Vuex"],
         links: { demo: "#", github: "#" },
-        accent: "orange"
+        accent: "#f97316",       // orange
+        category: "Lifestyle App",
+        image: "/projects/cookaro.png"
     },
     {
-        title: "Synapse Eduhub",
-        description: "Neural data engine for multi-cloud monitoring and real-time anomaly detection at scale.",
-        tech: ["Three.js", "WebGL", "Rust"],
-        links: { demo: "#", github: "#" },
-        accent: "cyan"
+        title: "Mahila Vikas Samaj",
+        description: "Empowering women through economic independence, skill development, and community support.",
+        tech: ["React", "tailwind-css"],
+        links: { demo: "www.mahilavikas.org/", github: "#" },
+        accent: "#f97316",
+        category: "NGO Website",
+        image: "/projects/mahilavikas.png"
     },
-
+    {
+        title: "My Portfolio",
+        description: "My portfolio website",
+        tech: ["React", "tailwind-css"],
+        links: { demo: "#", github: "#" },
+        accent: "#f97316",
+        category: "Portfolio Website",
+        image: "/projects/myportfolio.png"
+    },
+    {
+        title: "My steel",
+        description: "A steel company website",
+        tech: ["Next.js", "tailwind-css"],
+        links: { demo: "https://www.my-steelinida.in", github: "#" },
+        accent: "#f97316",
+        category: "Company Website",
+        image: "/projects/mysteel.png"
+    }
 ];
 
+/* ─── animation variants ─────────────────────────────────── */
 const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1,
-            delayChildren: 0.2
-        }
-    }
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
 };
 
 const cardVariants = {
-    hidden: (i) => ({
-        opacity: 0,
-        y: 100,
-        x: i % 2 === 0 ? -50 : 50,
-        rotate: i % 2 === 0 ? -10 : 10,
-        scale: 0.8,
-        z: -100
-    }),
+    hidden: { opacity: 0, y: 40 },
     visible: {
         opacity: 1,
         y: 0,
-        x: 0,
-        rotate: 0,
-        scale: 1,
-        z: 0,
-        transition: {
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-            duration: 0.8
-        }
-    }
+        transition: { type: "spring", stiffness: 90, damping: 18 },
+    },
 };
 
-const MagneticCard = ({ project, index }) => {
-    const cardRef = useRef(null);
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseXSpring = useSpring(x, { stiffness: 200, damping: 30 });
-    const mouseYSpring = useSpring(y, { stiffness: 200, damping: 30 });
-
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
-
-    const lightX = useTransform(mouseXSpring, [-0.5, 0.5], ["0%", "100%"]);
-    const lightY = useTransform(mouseYSpring, [-0.5, 0.5], ["0%", "100%"]);
-
-    const handleMouseMove = (e) => {
-        const rect = cardRef.current.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        const xPct = mouseX / width - 0.5;
-        const yPct = mouseY / height - 0.5;
-        x.set(xPct);
-        y.set(yPct);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
-    const pulseClasses = {
-        indigo: "pulse-indigo border-indigo-500/20 group-hover:bg-indigo-500/[0.05]",
-        purple: "pulse-purple border-purple-500/20 group-hover:bg-purple-500/[0.05]",
-        emerald: "pulse-emerald border-emerald-500/20 group-hover:bg-emerald-500/[0.05]",
-        orange: "pulse-orange border-orange-500/20 group-hover:bg-orange-500/[0.05]",
-        cyan: "pulse-cyan border-cyan-500/20 group-hover:bg-cyan-500/[0.05]"
-    };
-
-    const accentText = {
-        indigo: "text-indigo-400",
-        purple: "text-purple-400",
-        emerald: "text-emerald-400",
-        orange: "text-orange-400",
-        cyan: "text-cyan-400"
-    };
+/* ─── individual card ────────────────────────────────────── */
+const ProjectCard = ({ project, index }) => {
+    const isLive = project.links.demo !== "#";
+    const hasSource = project.links.github !== "#";
 
     return (
-        <motion.div
-            custom={index}
+        <motion.article
             variants={cardVariants}
-            ref={cardRef}
-            style={{
-                rotateX,
-                rotateY,
-                transformStyle: "preserve-3d"
+            whileHover={{
+                y: -8,
+                transition: { type: "spring", stiffness: 400, damping: 25 }
             }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className={`relative group h-[320px] w-full glass-premium rounded-[2.5rem] overflow-hidden border transition-all duration-700 ${pulseClasses[project.accent]} p-8 flex flex-col justify-between perspective-1000`}
+            className="group relative flex flex-col bg-white dark:bg-[#0f0f0f] border border-black/[0.06] dark:border-white/[0.06] rounded-[24px] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_var(--accent-glow)]"
+            style={{
+                "--accent": project.accent,
+                "--accent-glow": `${project.accent}15`
+            }}
         >
-            <motion.div
-                style={{
-                    background: `radial-gradient(circle at ${lightX} ${lightY}, rgba(255,255,255,0.2) 0%, transparent 70%)`,
-                }}
-                className="absolute inset-0 pointer-events-none z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            />
+            {/* ── image container ── */}
+            <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-white/[0.01]">
+                <motion.img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+                />
 
-            <div className="relative z-10" style={{ transform: "translateZ(40px)" }}>
-                <div className="flex justify-between items-start mb-4">
-                    <div className="flex flex-col">
-                        <div className="flex items-center gap-3 mb-2">
-                            <span className={`text-[10px] font-black uppercase tracking-[0.4em] ${accentText[project.accent]}`}>Entry 0{index + 1}</span>
-                            <div className={`h-px w-8 bg-current ${accentText[project.accent]} opacity-20`}></div>
-                        </div>
-                        <h3 className="text-2xl lg:text-3xl font-black text-white group-hover:translate-x-1 transition-transform duration-500 tracking-tight">{project.title}</h3>
+                {/* overlay on hover */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
+                    <div className="flex gap-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        {isLive && (
+                            <motion.a
+                                whileHover={{ scale: 1.1, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                href={project.links.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-3.5 bg-white text-black rounded-full shadow-2xl hover:bg-[var(--accent)] hover:text-white transition-colors duration-300"
+                                title="Live Preview"
+                            >
+                                <ExternalLink size={20} />
+                            </motion.a>
+                        )}
+                        {hasSource && (
+                            <motion.a
+                                whileHover={{ scale: 1.1, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                href={project.links.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-3.5 bg-white text-black rounded-full shadow-2xl hover:bg-black hover:text-white transition-colors duration-300"
+                                title="Source Code"
+                            >
+                                <Github size={20} />
+                            </motion.a>
+                        )}
                     </div>
-                    <motion.div whileHover={{ scale: 1.1, rotate: 90 }} className="p-2 bg-white/5 rounded-xl border border-white/10">
-                        <Zap size={18} className={accentText[project.accent]} />
-                    </motion.div>
                 </div>
 
-                <p className="text-gray-400 text-sm leading-relaxed mb-6 opacity-80 group-hover:opacity-100 transition-opacity font-medium line-clamp-3">{project.description}</p>
+                {/* category tag floating on image */}
+                <div className="absolute top-5 left-5">
+                    <span
+                        className="px-3.5 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] rounded-full backdrop-blur-md border border-white/10 text-white shadow-xl"
+                        style={{ background: `${project.accent}dd` }}
+                    >
+                        {project.category}
+                    </span>
+                </div>
+            </div>
 
-                <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                        <span key={tech} className="text-[9px] px-3 py-1 bg-black/40 rounded-full text-white/50 border border-white/5 uppercase font-bold tracking-widest group-hover:border-white/20 group-hover:text-white transition-all">
-                            {tech}
+            {/* ── body ── */}
+            <div className="flex flex-col flex-1 p-7 gap-5">
+                <div className="flex items-start justify-between">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight tracking-tight group-hover:text-[var(--accent)] transition-colors duration-300">
+                        {project.title}
+                    </h3>
+                    <div className="flex flex-col items-end opacity-20 group-hover:opacity-100 transition-opacity duration-500">
+                        <span className="text-[10px] font-black text-gray-400 dark:text-white tabular-nums">
+                            0{index + 1}
+                        </span>
+                        <div className="h-px w-4 bg-[var(--accent)] mt-1" />
+                    </div>
+                </div>
+
+                <p className="text-[15px] text-gray-500 dark:text-gray-400 leading-relaxed flex-1 line-clamp-3 font-medium">
+                    {project.description}
+                </p>
+
+                {/* tech stack */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                    {project.tech.map((t) => (
+                        <span
+                            key={t}
+                            className="text-[10px] font-bold px-3 py-1 rounded-lg border border-black/[0.04] dark:border-white/[0.04] text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-white/[0.01] hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors"
+                        >
+                            {t}
                         </span>
                     ))}
                 </div>
             </div>
 
-            <div className="relative z-10 flex justify-between items-center" style={{ transform: "translateZ(20px)" }}>
-                <motion.a
-                    whileHover={{ x: 5 }}
-                    href={project.links.demo}
-                    className="flex items-center gap-2 text-xs font-black text-white hover:text-white transition-colors uppercase tracking-[0.4em]"
+            {/* link footer */}
+            <div className="px-7 py-5 border-t border-black/[0.03] dark:border-white/[0.03] flex items-center justify-between bg-gray-50/30 dark:bg-white/[0.01]">
+                <a
+                    href={isLive ? project.links.demo : "#"}
+                    className={`group/link flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] transition-all ${isLive ? 'text-gray-900 dark:text-white hover:text-[var(--accent)]' : 'text-gray-300 dark:text-white/10 cursor-not-allowed'
+                        }`}
                 >
-                    Preview <ArrowUpRight size={14} className={accentText[project.accent]} />
-                </motion.a>
-                <div className="flex gap-4">
-                    <a href={project.links.github} className="text-[10px] font-bold text-white/20 hover:text-white/60 transition-all uppercase tracking-widest">
-                        Source
-                    </a>
-                </div>
+                    Case Study
+                    <div className="p-1 rounded-full bg-black/5 dark:bg-white/5 group-hover/link:bg-[var(--accent)] group-hover/link:text-white transition-all duration-300">
+                        <ArrowUpRight size={14} />
+                    </div>
+                </a>
             </div>
-
-            <div className="absolute -bottom-6 -right-4 text-9xl font-black text-white/[0.01] pointer-events-none select-none italic group-hover:text-white/[0.02] transition-all duration-1000" style={{ transform: "translateZ(-20px)" }}>
-                0{index + 1}
-            </div>
-        </motion.div>
+        </motion.article>
     );
 };
 
+/* ─── section ─────────────────────────────────────────────── */
 const Projects = () => {
     return (
-        <section className="py-32 px-6 md:px-20 bg-[#050505] relative overflow-hidden">
-            <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <section id="projects" className="py-32 px-6 md:px-20 relative overflow-hidden bg-white dark:bg-[#0a0a0a] transition-colors duration-500">
+
+            {/* dynamic grid bg */}
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] pointer-events-none"
+                style={{ backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`, backgroundSize: '32px 32px' }}
+            />
 
             <div className="container mx-auto relative z-10">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
-                    <div className="max-w-xl">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="flex items-center gap-5 mb-6"
-                        >
-                            <div className="h-px w-12 bg-neon-primary"></div>
-                            <span className="text-neon-primary font-mono text-xs tracking-[0.5em] uppercase font-black italic">The_Collection</span>
-                        </motion.div>
-                        <h2 className="text-6xl md:text-[8rem] font-black text-white tracking-tighter italic leading-[0.8] uppercase select-none">
-                            Project <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-primary to-neon-accent">Archive</span>
-                        </h2>
-                    </div>
+
+                <div className="max-w-4xl mb-24">
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="flex items-center gap-3 mb-6"
+                    >
+                        <div className="h-[2px] w-8 bg-indigo-500" />
+                        <span className="text-xs font-black uppercase tracking-[0.4em] text-indigo-500">Portfolio</span>
+                    </motion.div>
+
+                    <motion.h2
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-5xl md:text-8xl font-black text-gray-900 dark:text-white tracking-tighter leading-[0.85] uppercase mb-8"
+                    >
+                        Selected <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500">
+                            Artifacts
+                        </span>
+                    </motion.h2>
                 </div>
 
                 <motion.div
@@ -222,10 +255,10 @@ const Projects = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
                 >
                     {projects.map((project, index) => (
-                        <MagneticCard key={index} project={project} index={index} />
+                        <ProjectCard key={index} project={project} index={index} />
                     ))}
                 </motion.div>
             </div>
