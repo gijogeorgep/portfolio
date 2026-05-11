@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+import { ChevronDown, Github, Linkedin, Mail, Instagram } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 import profilepic from "../assets/profilepic.png";
@@ -78,11 +78,12 @@ const Hero = () => {
                     </div>
 
                     <div className="mt-12 flex justify-center space-x-6 text-gray-500 dark:text-gray-400">
-                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 dark:hover:text-white transition-colors"><Github size={24} /></a>
+                        <a href="https://github.com/gijogeorgep" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 dark:hover:text-white transition-colors"><Github size={24} /></a>
                         <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><Linkedin size={24} /></a>
-                        <a href="mailto:your.email@example.com" className="hover:text-neon-accent transition-colors"><Mail size={24} /></a>
+                        <a href="mailto:gijogeorgep02@gmail.com" className="hover:text-neon-accent transition-colors"><Mail size={24} /></a>
+                        <a href="https://instagram.com/g_co_dz" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors"><Instagram size={24} /></a>
                         <a
-                            href="https://wa.me/YOUR_PHONE_NUMBER?text=Hello!%20I%20saw%20your%20portfolio%20and%20wanted%20to%20reach%20out."
+                            href="https://wa.me/9778230292?text=Hello!%20I%20saw%20your%20portfolio%20and%20wanted%20to%20reach%20out."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:text-green-500 transition-colors"
