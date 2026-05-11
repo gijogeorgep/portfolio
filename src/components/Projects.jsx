@@ -4,18 +4,25 @@ import { Github, Zap, ArrowUpRight } from "lucide-react";
 
 const projects = [
     {
-        title: "Gear box",
-        description: "A full-stack MERN web application that allows users to browse, book, and rent professional camera equipment online. Features secure payment processing through Razorpay integration, user authentication, and a responsive booking management system.",
-        tech: ["MongoDB", "Express", "React", "Node.js", "Razorpay"],
-        links: { demo: "https://gearbox-frontend.onrender.com/", github: "#" },
-        accent: "indigo"
+        title: "Synapse Eduhub",
+        description: "Neural data engine for multi-cloud monitoring and real-time anomaly detection at scale.",
+        tech: ["Three.js", "WebGL", "Rust"],
+        links: { demo: "https://www.synapseeduhub.com", github: "#" },
+        accent: "cyan"
     },
     {
         title: "Taskin AI",
         description: "A comprehensive task management platform built on the MERN stack. It streamlines project organization and progress tracking with real-time updates and an intuitive dashboard for enhanced team productivity.",
         tech: ["MongoDB", "Express", "React", "Node.js", "Redis"],
-        links: { demo: "#", github: "#" },
+        links: { demo: "https://taskin-rho.vercel.app/", github: "#" },
         accent: "purple"
+    },
+    {
+        title: "Gear box",
+        description: "A full-stack MERN web application that allows users to browse, book, and rent professional camera equipment online. Features secure payment processing through Razorpay integration, user authentication, and a responsive booking management system.",
+        tech: ["MongoDB", "Express", "React", "Node.js", "Razorpay"],
+        links: { demo: "https://gearbox-frontend.onrender.com/", github: "#" },
+        accent: "indigo"
     },
     {
         title: "CV Craft",
@@ -31,15 +38,8 @@ const projects = [
         links: { demo: "#", github: "#" },
         accent: "orange"
     },
-    {
-        title: "Synapse Eduhub",
-        description: "Neural data engine for multi-cloud monitoring and real-time anomaly detection at scale.",
-        tech: ["Three.js", "WebGL", "Rust"],
-        links: { demo: "#", github: "#" },
-        accent: "cyan"
-    },
-
 ];
+
 
 const containerVariants = {
     hidden: { opacity: 0 },
