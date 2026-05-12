@@ -4,7 +4,7 @@ import { ArrowUpRight, Github, Layers, ExternalLink } from "lucide-react";
 
 const projects = [
     {
-        title: "Synapse Eduhub",
+        title: "Synapse Edu Hub",
         description:
             "A modern learning ecosystem offering personalized experiences, expert mentorship, and comprehensive resources for academic success.",
         tech: ["React", "Node.js", "MongoDB", "Firebase"],
@@ -36,7 +36,7 @@ const projects = [
     {
         title: "CV Craft",
         description:
-            "A MERN-stack resume builder with customizable templates, multi-version saving, and instant high-quality document export via canvas.",
+            "A MERN stack resume builder with customizable templates, multi-version saving, and instant high-quality document export via canvas.",
         tech: ["MongoDB", "Express", "React", "Node.js", "Canvas API"],
         links: { demo: "#", github: "#" },
         accent: "#10b981",       // emerald
@@ -48,7 +48,9 @@ const projects = [
         description:
             "A Kerala-cuisine-focused web app that generates ingredient lists by recipe and headcount, displaying items with images for easy meal planning.",
         tech: ["Vue.js", "Appwrite", "Vuex"],
-        links: { demo: "#", github: "#" },
+        links: {
+            demo: "https://cookaro.netlify.app/", github: "#"
+        },
         accent: "#f97316",       // orange
         category: "Lifestyle App",
         image: "/projects/cookaro.png"
@@ -57,7 +59,7 @@ const projects = [
         title: "Mahila Vikas Samaj",
         description: "Empowering women through economic independence, skill development, and community support.",
         tech: ["React", "tailwind-css"],
-        links: { demo: "www.mahilavikas.org/", github: "#" },
+        links: { demo: "https://www.mahilavikassamaj.org/", github: "#" },
         accent: "#f97316",
         category: "NGO Website",
         image: "/projects/mahilavikas.png"
@@ -75,7 +77,7 @@ const projects = [
         title: "My steel",
         description: "A steel company website",
         tech: ["Next.js", "tailwind-css"],
-        links: { demo: "https://www.my-steelinida.in", github: "#" },
+        links: { demo: "https://mysteelindia.in/", github: "#" },
         accent: "#f97316",
         category: "Company Website",
         image: "/projects/mysteel.png"
