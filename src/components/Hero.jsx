@@ -57,12 +57,10 @@ const Hero = () => {
             <span className="text-neon-accent animate-pulse">{"/>"}</span>
           </h1>
           <h2 className="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-8 font-light">
-            Full Stack Developer (MERN) & UI Designer
+            Freelancer Full Stack Developer (MERN) | Kochi & Kozhikode, Kerala
           </h2>
           <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-400 mb-10 leading-relaxed font-medium dark:font-normal">
-            Building scalable web applications with futuristic user interfaces.
-            Passionate about bringing code to life with smooth animations and
-            robust architecture.
+            I build modern websites, web apps, and scalable digital products for startups and businesses across Kochi and Kozhikode. Passionate about clean code, thoughtful UX, and smooth, premium user experiences.
           </p>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-6">
@@ -90,7 +88,7 @@ const Hero = () => {
               <Github size={24} />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/gijo-george-p"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"

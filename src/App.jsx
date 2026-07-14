@@ -7,6 +7,7 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
+import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import IntroScreen from "./components/IntroScreen";
@@ -57,6 +58,7 @@ function App() {
           <Experience />
           <TechStack />
           <Projects />
+          <Testimonials />
           <Contact />
           <Footer />
         </motion.div>

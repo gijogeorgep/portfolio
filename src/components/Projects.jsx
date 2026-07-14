@@ -1,6 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Layers, ExternalLink } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 
 const projects = [
     {
@@ -11,7 +11,9 @@ const projects = [
         links: { demo: "https://www.synapseeduhub.com", github: "#" },
         accent: "#6366f1",
         category: "EdTech Platform",
-        image: "/projects/synapse.png"
+        image: "/projects/synapse.png",
+        images: ["/projects/synapse.png", "/projects/synapse.png", "/projects/synapse.png"],
+        imageLabels: ["Dashboard", "Learning Flow", "Student Experience"]
     },
     {
         title: "Taskin AI",
@@ -21,7 +23,9 @@ const projects = [
         links: { demo: "https://taskin-rho.vercel.app/", github: "#" },
         accent: "#a855f7",
         category: "Productivity App",
-        image: "/projects/taskin.png"
+        image: "/projects/taskin.png",
+        images: ["/projects/taskin.png", "/projects/taskin.png", "/projects/taskin.png"],
+        imageLabels: ["Workspace", "Task Board", "Collaboration"]
     },
     {
         title: "Gear Box",
@@ -31,7 +35,9 @@ const projects = [
         links: { demo: "https://gearbox-frontend.onrender.com/", github: "#" },
         accent: "#06b6d4",
         category: "E-Commerce",
-        image: "/projects/gearbox.png"
+        image: "/projects/gearbox.png",
+        images: ["/projects/gearbox.png", "/projects/gearbox.png", "/projects/gearbox.png"],
+        imageLabels: ["Storefront", "Booking Flow", "Checkout"]
     },
     {
         title: "CV Craft",
@@ -41,7 +47,9 @@ const projects = [
         links: { demo: "#", github: "#" },
         accent: "#10b981",       // emerald
         category: "Dev Tool",
-        image: "/projects/cvcraft.png"
+        image: "/projects/cvcraft.png",
+        images: ["/projects/cvcraft.png", "/projects/cvcraft.png", "/projects/cvcraft.png"],
+        imageLabels: ["Builder", "Resume Editor", "Export"]
     },
     {
         title: "Cookaro",
@@ -53,7 +61,9 @@ const projects = [
         },
         accent: "#f97316",       // orange
         category: "Lifestyle App",
-        image: "/projects/cookaro.png"
+        image: "/projects/cookaro.png",
+        images: ["/projects/cookaro.png", "/projects/cookaro.png", "/projects/cookaro.png"],
+        imageLabels: ["Recipe View", "Planning Flow", "Mobile UX"]
     },
     {
         title: "Mahila Vikas Samaj",
@@ -62,7 +72,9 @@ const projects = [
         links: { demo: "https://www.mahilavikassamaj.org/", github: "#" },
         accent: "#f97316",
         category: "NGO Website",
-        image: "/projects/mahilavikas.png"
+        image: "/projects/mahilavikas.png",
+        images: ["/projects/mahilavikas.png", "/projects/mahilavikas.png", "/projects/mahilavikas.png"],
+        imageLabels: ["Home", "Impact Story", "Support"]
     },
     {
         title: "My Portfolio",
@@ -71,7 +83,9 @@ const projects = [
         links: { demo: "#", github: "#" },
         accent: "#f97316",
         category: "Portfolio Website",
-        image: "/projects/myportfolio.png"
+        image: "/projects/myportfolio.png",
+        images: ["/projects/myportfolio.png", "/projects/myportfolio.png", "/projects/myportfolio.png"],
+        imageLabels: ["Hero", "Projects", "Contact"]
     },
     {
         title: "My steel",
@@ -80,7 +94,9 @@ const projects = [
         links: { demo: "https://mysteelindia.in/", github: "#" },
         accent: "#f97316",
         category: "Company Website",
-        image: "/projects/mysteel.png"
+        image: "/projects/mysteel.png",
+        images: ["/projects/mysteel.png", "/projects/mysteel.png", "/projects/mysteel.png"],
+        imageLabels: ["Landing", "Services", "Contact"]
     }
 ];
 
@@ -103,6 +119,19 @@ const cardVariants = {
 const ProjectCard = ({ project, index }) => {
     const isLive = project.links.demo !== "#";
     const hasSource = project.links.github !== "#";
+    const [activeImage, setActiveImage] = useState(0);
+    const slides = project.images?.length ? project.images : [project.image, project.image, project.image];
+    const slideLabels = project.imageLabels ?? ["Overview", "UI Flow", "Experience"];
+
+    useEffect(() => {
+        if (slides.length <= 1) return;
+
+        const timer = window.setInterval(() => {
+            setActiveImage((current) => (current + 1) % slides.length);
+        }, 3200);
+
+        return () => window.clearInterval(timer);
+    }, [slides.length]);
 
     return (
         <motion.article
@@ -119,11 +148,31 @@ const ProjectCard = ({ project, index }) => {
         >
             {/* ── image container ── */}
             <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-white/[0.01]">
-                <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
-                />
+                <AnimatePresence mode="wait">
+                    <motion.img
+                        key={`${project.title}-${activeImage}`}
+                        src={slides[activeImage]}
+                        alt={`${project.title} preview ${activeImage + 1}`}
+                        initial={{ opacity: 0, scale: 1.03 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 1.06 }}
+                        transition={{ duration: 0.7, ease: "easeInOut" }}
+                        className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+                    />
+                </AnimatePresence>
+
+                <div className="absolute bottom-4 left-4 z-10 rounded-full border border-white/20 bg-black/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-md">
+                    {slideLabels[activeImage]}
+                </div>
+
+                <div className="absolute bottom-4 right-4 z-10 flex gap-1.5">
+                    {slides.map((_, index) => (
+                        <span
+                            key={`${project.title}-dot-${index}`}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${activeImage === index ? "w-5 bg-white" : "w-1.5 bg-white/50"}`}
+                        />
+                    ))}
+                </div>
 
                 {/* overlay on hover */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">

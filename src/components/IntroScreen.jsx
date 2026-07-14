@@ -24,7 +24,7 @@ function IntroScreen({ onComplete }) {
 
     const completionTimer = window.setTimeout(() => {
       onComplete();
-    }, 3500);
+    }, 2200);
 
     return () => {
       window.clearInterval(typingInterval);
@@ -68,13 +68,14 @@ function IntroScreen({ onComplete }) {
           scale: 1.03,
           transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
         }}
-        className="relative z-10 flex items-center justify-center px-6 text-center"
+        className="relative z-10 flex w-full items-center justify-center px-4 text-center"
       >
-        <div className="relative inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-5 shadow-[0_0_60px_rgba(99,102,241,0.2)] backdrop-blur-xl sm:px-8 sm:py-6">
+        <div className="relative flex flex-wrap items-center justify-center">
           {INTRO_TEXT.split("").map((char, index) => (
             <motion.span
               key={`${char}-${index}`}
-              className="font-mono text-4xl font-semibold tracking-[0.2em] text-white sm:text-5xl md:text-6xl lg:text-7xl"
+              className="font-mono font-semibold text-white"
+              style={{ fontSize: "clamp(2rem, 7vw, 5.5rem)", letterSpacing: "clamp(0.05em, 1vw, 0.2em)" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: index < displayText.length ? 1 : 0 }}
               transition={{ duration: 0.06, ease: "easeOut" }}
@@ -83,7 +84,8 @@ function IntroScreen({ onComplete }) {
             </motion.span>
           ))}
           <motion.span
-            className="ml-1 inline-block h-[0.9em] w-[0.5ch] rounded-sm bg-white align-middle shadow-[0_0_12px_rgba(255,255,255,0.8)]"
+            className="ml-1 inline-block rounded-sm bg-white align-middle shadow-[0_0_12px_rgba(255,255,255,0.8)]"
+            style={{ height: "0.9em", width: "0.5ch" }}
             animate={{ opacity: showCursor ? 1 : 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           />
