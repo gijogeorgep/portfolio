@@ -7,15 +7,15 @@ const testimonials = [
     name: "Adithya R. Nair",
     role: "Associate Program Coordinator",
     company: "Mahila Vikas Samaj",
-    quote: `We had an excellent experience working with Gcodz for the development of the Mahila Vikas Samaj website. Their team was highly professional, responsive, and committed to delivering quality work. The website was developed with great attention to detail, and they were always available to address our requirements and suggestions. I highly recommend Gcodz to anyone looking for reliable and high-quality web development services.`,
+    quote: `We had an excellent experience working with gcodz for the development of the Mahila Vikas Samaj website. Their team was highly professional, responsive, and committed to delivering quality work. The website was developed with great attention to detail, and they were always available to address our requirements and suggestions. I highly recommend gcodz to anyone looking for reliable and high-quality web development services.`,
     image: "/Review/adithya.jpeg",
   },
   {
     name: "Amith Girish",
-    role: "CEO",
+    role: "CEO & Founder",
     company: "Synapse Edu Hub",
     quote:
-      "Gcodz delivered a modern, intuitive, and high-performing e-learning platform that aligned perfectly with our vision. From planning to execution, the project was handled with professionalism, technical expertise, and attention to detail. The final platform exceeded our expectations in both design and functionality. We would confidently recommend Gcodz for anyone seeking reliable and high-quality web development services.",
+      "gcodz delivered a modern, intuitive, and high-performing e-learning platform that aligned perfectly with our vision. From planning to execution, the project was handled with professionalism, technical expertise, and attention to detail. The final platform exceeded our expectations in both design and functionality. We would confidently recommend gcodz for anyone seeking reliable and high-quality web development services.",
     image: "/Review/amith.jpeg",
   },
 ];

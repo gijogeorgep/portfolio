@@ -2,11 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const letters = [
-    { char: "G", color: "#6366f1", shadow: "rgba(99,102,241,0.8)" },
-    { char: "C", color: "#06b6d4", shadow: "rgba(6,182,212,0.8)" },
-    { char: "O", color: "#d946ef", shadow: "rgba(217,70,239,0.8)" },
-    { char: "D", color: "#6366f1", shadow: "rgba(99,102,241,0.8)" },
-    { char: "Z", color: "#06b6d4", shadow: "rgba(6,182,212,0.8)" },
+    { char: "g", color: "#6366f1", shadow: "rgba(99,102,241,0.8)" },
+    { char: "c", color: "#06b6d4", shadow: "rgba(6,182,212,0.8)" },
+    { char: "o", color: "#d946ef", shadow: "rgba(217,70,239,0.8)" },
+    { char: "d", color: "#6366f1", shadow: "rgba(99,102,241,0.8)" },
+    { char: "z", color: "#06b6d4", shadow: "rgba(6,182,212,0.8)" },
 ];
 
 const Gcodz = () => {
