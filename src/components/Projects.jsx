@@ -12,8 +12,8 @@ const projects = [
         accent: "#6366f1",
         category: "EdTech Platform",
         image: "/projects/synapse.png",
-        images: ["/projects/synapse.png", "/projects/synapse.png", "/projects/synapse.png"],
-        imageLabels: ["Dashboard", "Learning Flow", "Student Experience"]
+        images: ["/projects/synapse1.png", "/projects/synapse2.png", "/projects/synapse3.png"],
+        imageLabels: ["Home", "Dashboard", "Student Experience"]
     },
     {
         title: "Taskin AI",
@@ -133,6 +133,15 @@ const ProjectCard = ({ project, index }) => {
         return () => window.clearInterval(timer);
     }, [slides.length]);
 
+    const handleCardClick = (e) => {
+        if (e.target.closest('a') || e.target.closest('button')) {
+            return;
+        }
+        if (isLive) {
+            window.open(project.links.demo, "_blank", "noopener,noreferrer");
+        }
+    };
+
     return (
         <motion.article
             variants={cardVariants}
@@ -140,7 +149,8 @@ const ProjectCard = ({ project, index }) => {
                 y: -8,
                 transition: { type: "spring", stiffness: 400, damping: 25 }
             }}
-            className="group relative flex flex-col bg-white dark:bg-[#0f0f0f] border border-black/[0.06] dark:border-white/[0.06] rounded-[24px] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_var(--accent-glow)]"
+            onClick={handleCardClick}
+            className={`group relative flex flex-col bg-white dark:bg-[#0f0f0f] border border-black/[0.06] dark:border-white/[0.06] rounded-[24px] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_var(--accent-glow)] ${isLive ? 'cursor-pointer' : ''}`}
             style={{
                 "--accent": project.accent,
                 "--accent-glow": `${project.accent}15`
@@ -252,10 +262,12 @@ const ProjectCard = ({ project, index }) => {
             <div className="px-7 py-5 border-t border-black/[0.03] dark:border-white/[0.03] flex items-center justify-between bg-gray-50/30 dark:bg-white/[0.01]">
                 <a
                     href={isLive ? project.links.demo : "#"}
+                    target={isLive ? "_blank" : undefined}
+                    rel={isLive ? "noopener noreferrer" : undefined}
                     className={`group/link flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] transition-all ${isLive ? 'text-gray-900 dark:text-white hover:text-[var(--accent)]' : 'text-gray-300 dark:text-white/10 cursor-not-allowed'
                         }`}
                 >
-                    Case Study
+                    see Work
                     <div className="p-1 rounded-full bg-black/5 dark:bg-white/5 group-hover/link:bg-[var(--accent)] group-hover/link:text-white transition-all duration-300">
                         <ArrowUpRight size={14} />
                     </div>
